@@ -1,0 +1,7 @@
+﻿  Map.cpp
+  NPC.cpp
+  Player.cpp
+  main.cpp
+C:\Users\Usuario\Desktop\HOLAAAA\00_EdgardHernandezYuminMartinez_AA2_1\00_EdgardHernandezYuminMartinez_AA2_1\main.cpp(4,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+  Generando código...
+  00_EdgardHernandezYuminMartinez_AA2_1.vcxproj -> C:\Users\Usuario\Desktop\HOLAAAA\00_EdgardHernandezYuminMartinez_AA2_1\x64\Debug\00_EdgardHernandezYuminMartinez_AA2_1.exe
