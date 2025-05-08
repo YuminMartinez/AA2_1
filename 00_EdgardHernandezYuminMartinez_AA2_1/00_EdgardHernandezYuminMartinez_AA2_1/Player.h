@@ -11,8 +11,14 @@ private:
 
 public:
 	Player();
-	int getPosX() const { return m_PosX; }
-	int getPosY() const { return m_PosY; }
+	int getPosX() const 
+	{
+		return m_PosX;
+	}
+	int getPosY() const
+	{ 
+		return m_PosY; 
+	}
 
 	//void playerMoviment();
 };

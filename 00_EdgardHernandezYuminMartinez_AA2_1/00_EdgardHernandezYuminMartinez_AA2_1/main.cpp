@@ -2,7 +2,9 @@
 int main()
 {
 	srand(time(NULL));
-	Sleep(100);
+	/*std::cout << "H" << std::endl;
+	Sleep(10000);
+	std::cout << "A" << std::endl;*/
 	Map map;
 	map.printMap();
 
