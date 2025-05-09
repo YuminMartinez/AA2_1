@@ -12,7 +12,7 @@ void Game:: CheckLimit(int x,int y)
 void Game::PlayerInPut()
 {
 	
-	m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::DEFAULT;
+	//m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::;
 	int x = m_player.m_PosX;
 	int y = m_player.m_PosY;
 	
@@ -45,7 +45,7 @@ void Game::PlayerInPut()
 
 	
 }
-void Game::npcSpawn(int npc)
+/*/void Game::npcSpawn(int npc)
 {
 	for (int i = 0; i < npc; i++) {
 		int randX, randY;
@@ -60,3 +60,4 @@ void Game::npcSpawn(int npc)
 		
 	}
 }
+/*/

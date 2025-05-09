@@ -15,8 +15,9 @@ int main()
 	srand(time(NULL));
 	
 	Game game;
-	game.m_player;
 	game.m_map;
+	game.m_player;
+	game.m_NPC;
 	
 
 	//game.npcSpawn(6);

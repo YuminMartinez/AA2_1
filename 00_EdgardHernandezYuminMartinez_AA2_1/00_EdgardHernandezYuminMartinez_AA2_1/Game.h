@@ -16,7 +16,7 @@ public:
 
 	void CheckLimit(int x,int y);
 	void PlayerInPut();
-	void npcSpawn(int npc);
+	//void npcSpawn(int npc);
 	
 };
 
