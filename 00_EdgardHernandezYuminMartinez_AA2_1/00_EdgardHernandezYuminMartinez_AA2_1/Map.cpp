@@ -1,11 +1,7 @@
 #include "util.h"
 
 
-Map::Map(Player* player) :
-    m_playerPtr(player),
-    filas(0), columnas(0),
-    limitLosSantos(0), limitSanFierro(0),
-    m_Type(nullptr)
+Map::Map() 
 {
     std::ifstream myFile("config.txt");
     if (!myFile.is_open()) {
@@ -32,6 +28,18 @@ Map::Map(Player* player) :
         std::cerr << "Columnas inválidas\n";
         return;
     }
+    if (!std::getline(ss, item, ';') || (totalNpc = std::stoi(item)) <= 0) {
+        std::cerr << "Columnas inválidas\n";
+        return;
+    }
+    if (!std::getline(ss, item, ';') || (totalToSanFierro = std::stoi(item)) <= 0) {
+        std::cerr << "Columnas inválidas\n";
+        return;
+    }
+    if (!std::getline(ss, item, ';') || (maxMoneySantos = std::stoi(item)) <= 0) {
+        std::cerr << "Columnas inválidas\n";
+        return;
+    }
 
     // Calcular límites después de tener columnas
     limitLosSantos = columnas / 3;
@@ -53,10 +61,9 @@ Map::Map(Player* player) :
 
 
     }
-
-    int x = m_playerPtr->getPosX();
-    int y = m_playerPtr->getPosY();
-    m_Type[x][y] = objectType::PLAYER;
+   
+  
+   // m_Type[x][y] = objectType::PLAYER;
 }
 
 Map::~Map() {
@@ -71,12 +78,18 @@ Map::~Map() {
 
 
 void Map::printMap() const {
+   
     for (int i = 0; i < filas; ++i) {
         for (int j = 0; j < columnas; ++j) {
+            
             switch (m_Type[i][j]) {
-            case objectType::LIMIT: std::cout << " X"; break;
-            case objectType::PLAYER: std::cout << " P"; break;
-            case objectType::DEFAULT: std::cout << "  "; break;
+            case objectType::LIMIT: std::cout << "X"; break;
+            case objectType::PLAYER_UP: std::cout << "^"; break;
+            case objectType::PLAYER_DOWN: std::cout << "v"; break;
+            case objectType::PLAYER_LEFT: std::cout << "<"; break;
+            case objectType::PLAYER_RIGHT: std::cout << ">"; break;
+            case objectType::DEFAULT: std::cout << " "; break;
+            case objectType::NPC: std::cout << "P"; break;
             default: std::cout << " ?";
             }
         }

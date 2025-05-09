@@ -3,7 +3,10 @@
 class Player;
 enum class objectType
 {
-	PLAYER,
+	PLAYER_UP,
+    PLAYER_DOWN,
+    PLAYER_LEFT,
+    PLAYER_RIGHT,
 	NPC,
 	MONEY,
 	LIMIT,
@@ -14,15 +17,17 @@ class Map {
 private:
     int filas;
     int columnas;
+    int totalToSanFierro;
+    int maxMoneySantos;
     int limitLosSantos;
     int limitSanFierro;
-    Player* m_playerPtr;
-    objectType** m_Type;
+    int totalNpc;
 
 public:
-    Map(Player* player = nullptr); // Constructor con parámetro opcional
-    ~Map(); // Destructor para liberar memoria
 
+    objectType** m_Type;
+    Map(); 
+    ~Map(); 
     void printMap() const;
     
 };

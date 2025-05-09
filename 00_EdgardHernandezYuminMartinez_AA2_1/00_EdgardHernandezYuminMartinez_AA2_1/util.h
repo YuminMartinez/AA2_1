@@ -7,9 +7,5 @@
 #include "Player.h"
 #include "NPC.h"
 
-/*int random(int vmin, int vmax)
-{
+int numRandom(int min, int max);
 
-	return  rand() % (vmax - vmin + 1) +vmin  ;
-
-}*/

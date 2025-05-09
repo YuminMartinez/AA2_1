@@ -1,12 +1,34 @@
 #include "util.h"
+#include "Game.h"
+
+int numRandom(int min, int max)
+{
+	return rand() % (max - min + 1) + min;
+}
+
+void limpiarPantalla() {
+	system("cls");  // Windows uwu
+
+}
 int main()
 {
 	srand(time(NULL));
-	/*std::cout << "H" << std::endl;
-	Sleep(10000);
-	std::cout << "A" << std::endl;*/
-	Map map;
-	map.printMap();
+	
+	Game game;
+	game.m_player;
+	game.m_map;
+	
 
-	//GetAsyncKeyState() &0x8000
+	//game.npcSpawn(6);
+	
+	while (game.finish == false)
+	{
+		Sleep(10);
+		limpiarPantalla();
+		
+		
+		game.m_map.printMap();
+		game.PlayerInPut();
+
+	}
 }

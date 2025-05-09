@@ -2,23 +2,15 @@
 #include "util.h"
 class Player
 {
-
-private:
+public:
 	int m_PosX;
 	int m_PosY;
 	int money = 0;
-	
-
-public:
 	Player();
-	int getPosX() const 
-	{
-		return m_PosX;
-	}
-	int getPosY() const
-	{ 
-		return m_PosY; 
-	}
+	void moveForward();
+	void moveLeft();
+	void moveBack();
+	void moveRight();
 
 	//void playerMoviment();
 };

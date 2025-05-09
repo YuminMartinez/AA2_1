@@ -1,3 +1,2 @@
-﻿  main.cpp
-C:\Users\EdgardHernandezRosat\Desktop\AA2_1_Repo\AA2_1\00_EdgardHernandezYuminMartinez_AA2_1\00_EdgardHernandezYuminMartinez_AA2_1\main.cpp(4,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  00_EdgardHernandezYuminMartinez_AA2_1.vcxproj -> C:\Users\EdgardHernandezRosat\Desktop\AA2_1_Repo\AA2_1\00_EdgardHernandezYuminMartinez_AA2_1\x64\Debug\00_EdgardHernandezYuminMartinez_AA2_1.exe
+﻿  Map.cpp
+  00_EdgardHernandezYuminMartinez_AA2_1.vcxproj -> C:\Users\Usuario\Desktop\projecte\AA2_1\00_EdgardHernandezYuminMartinez_AA2_1\x64\Debug\00_EdgardHernandezYuminMartinez_AA2_1.exe
