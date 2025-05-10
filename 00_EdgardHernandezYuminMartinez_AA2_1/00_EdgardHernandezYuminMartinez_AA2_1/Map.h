@@ -22,13 +22,14 @@ private:
     int limitLosSantos;
     int limitSanFierro;
     int totalNpc;
+    
 
 public:
 
     objectType** m_Type;
     Map(); 
     ~Map(); 
-    void printMap() const;
+    
     int getFilas() const;
     int getColumnas() const;
     

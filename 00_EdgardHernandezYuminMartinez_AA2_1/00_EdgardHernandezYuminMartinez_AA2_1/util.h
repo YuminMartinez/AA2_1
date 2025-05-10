@@ -7,5 +7,7 @@
 #include "Player.h"
 #include "NPC.h"
 
+enum class objectType;
+
 int numRandom(int min, int max);
 

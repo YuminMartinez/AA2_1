@@ -14,8 +14,10 @@ public:
 
 	bool finish = false;
 	void PlayerInPut();
+	void setPlayer();
 	//void npcSpawn(int npc);
-	
+	void printMap() const;
+	 
 };
 
 

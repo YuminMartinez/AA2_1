@@ -7,17 +7,21 @@ Player::Player()
 }
 void Player::moveForward() 
 {
-	m_PosY--;
+	m_PosX--;
+	
 }
 void Player::moveLeft()
 {
-	m_PosX--;
+	m_PosY--;
+	
 }
 void Player::moveBack()
 {
-	m_PosY++;
+	m_PosX++;
+	
 }
 void Player::moveRight()
-{
-	m_PosX++;
+{ 
+	m_PosY++;
+	
 }

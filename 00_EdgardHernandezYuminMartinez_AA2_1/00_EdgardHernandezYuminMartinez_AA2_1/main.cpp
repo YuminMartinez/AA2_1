@@ -18,7 +18,7 @@ int main()
 	game.m_map;
 	game.m_player;
 	game.m_NPC;
-	
+	game.setPlayer();
 
 	//game.npcSpawn(6);
 	
@@ -28,7 +28,7 @@ int main()
 		limpiarPantalla();
 		
 		
-		game.m_map.printMap();
+		game.printMap();
 		game.PlayerInPut();
 
 	}
