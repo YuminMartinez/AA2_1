@@ -63,8 +63,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-05-08T09:04:33.592Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -77,8 +76,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-05-08T09:04:32.065Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -91,8 +89,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-05-09T15:24:42.337Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -104,8 +101,7 @@
               "RelativeToolTip": "00_EdgardHernandezYuminMartinez_AA2_1\\Map.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-08T09:04:31.227Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-08T09:04:31.227Z"
             },
             {
               "$type": "Document",
@@ -117,8 +113,7 @@
               "RelativeToolTip": "00_EdgardHernandezYuminMartinez_AA2_1\\main.cpp",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAABMAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-05-08T07:34:30.597Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-08T07:34:30.597Z"
             },
             {
               "$type": "Document",
@@ -130,8 +125,7 @@
               "RelativeToolTip": "00_EdgardHernandezYuminMartinez_AA2_1\\Game.h",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-09T14:09:55.434Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T14:09:55.434Z"
             },
             {
               "$type": "Document",
@@ -143,8 +137,7 @@
               "RelativeToolTip": "00_EdgardHernandezYuminMartinez_AA2_1\\Game.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-05-09T14:10:12.763Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T14:10:12.763Z"
             },
             {
               "$type": "Document",
@@ -156,8 +149,7 @@
               "RelativeToolTip": "00_EdgardHernandezYuminMartinez_AA2_1\\NPC.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-08T09:04:32.72Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-08T09:04:32.72Z"
             },
             {
               "$type": "Document",
@@ -165,8 +157,8 @@
               "Title": "Map.cpp",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Projecte04Grup04\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Map.cpp",
               "RelativeDocumentMoniker": "00_EdgardHernandezYuminMartinez_AA2_1\\Map.cpp",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\Projecte04Grup04\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Map.cpp*",
-              "RelativeToolTip": "00_EdgardHernandezYuminMartinez_AA2_1\\Map.cpp*",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Projecte04Grup04\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Map.cpp",
+              "RelativeToolTip": "00_EdgardHernandezYuminMartinez_AA2_1\\Map.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-05-08T09:04:36.368Z",
@@ -182,8 +174,7 @@
               "RelativeToolTip": "00_EdgardHernandezYuminMartinez_AA2_1\\NPC.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-05-09T17:17:36.771Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T17:17:36.771Z"
             }
           ]
         }
