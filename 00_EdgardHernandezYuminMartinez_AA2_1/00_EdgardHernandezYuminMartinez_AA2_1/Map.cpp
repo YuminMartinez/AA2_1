@@ -15,7 +15,7 @@ Map::Map()
     std::string line;
     if (!std::getline(myFile, line)) {
         std::cerr << "Error leyendo config.txt\n";
-        return;
+     
     }
 
     std::stringstream ss(line);
@@ -23,10 +23,15 @@ Map::Map()
 
     if (!std::getline(ss, item, ';') || (filas = std::stoi(item)) <= 0) {
         std::cerr << "Filas inválidas\n";
+<<<<<<< HEAD
+=======
+       
+>>>>>>> origin/main
     }
 
     if (!std::getline(ss, item, ';') || (columnas = std::stoi(item)) <= 0) {
         std::cerr << "Columnas inválidas\n";
+<<<<<<< HEAD
     }
     if (!std::getline(ss, item, ';') || (totalNpc = std::stoi(item)) <= 0) {
         std::cerr << "Columnas inválidas\n";
@@ -36,6 +41,21 @@ Map::Map()
     }
     if (!std::getline(ss, item, ';') || (maxMoneySantos = std::stoi(item)) <= 0) {
         std::cerr << "Columnas inválidas\n";
+=======
+       
+    }
+    if (!std::getline(ss, item, ';') || (totalNpc = std::stoi(item)) <= 0) {
+        std::cerr << "Columnas inválidas\n";
+        
+    }
+    if (!std::getline(ss, item, ';') || (totalToSanFierro = std::stoi(item)) <= 0) {
+        std::cerr << "Columnas inválidas\n";
+        
+    }
+    if (!std::getline(ss, item, ';') || (maxMoneySantos = std::stoi(item)) <= 0) {
+        std::cerr << "Columnas inválidas\n";
+      
+>>>>>>> origin/main
     }
 
     // Calcular límites después de tener columnas
@@ -71,11 +91,7 @@ Map::~Map() {
 
 
 void Map::printMap() const {
-    if (!m_Type) {
-        std::cerr << "Mapa no inicializado" << std::endl;
-        return;
-    }
-
+   
     for (int i = 0; i < filas; ++i) {
         for (int j = 0; j < columnas; ++j) {
             switch (m_Type[i][j]) {
