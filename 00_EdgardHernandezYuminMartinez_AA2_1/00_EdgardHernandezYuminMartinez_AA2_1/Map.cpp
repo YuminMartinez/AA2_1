@@ -23,15 +23,11 @@ Map::Map()
 
     if (!std::getline(ss, item, ';') || (filas = std::stoi(item)) <= 0) {
         std::cerr << "Filas inválidas\n";
-<<<<<<< HEAD
-=======
-       
->>>>>>> origin/main
+
     }
 
     if (!std::getline(ss, item, ';') || (columnas = std::stoi(item)) <= 0) {
         std::cerr << "Columnas inválidas\n";
-<<<<<<< HEAD
     }
     if (!std::getline(ss, item, ';') || (totalNpc = std::stoi(item)) <= 0) {
         std::cerr << "Columnas inválidas\n";
@@ -41,7 +37,7 @@ Map::Map()
     }
     if (!std::getline(ss, item, ';') || (maxMoneySantos = std::stoi(item)) <= 0) {
         std::cerr << "Columnas inválidas\n";
-=======
+
        
     }
     if (!std::getline(ss, item, ';') || (totalNpc = std::stoi(item)) <= 0) {
@@ -55,7 +51,7 @@ Map::Map()
     if (!std::getline(ss, item, ';') || (maxMoneySantos = std::stoi(item)) <= 0) {
         std::cerr << "Columnas inválidas\n";
       
->>>>>>> origin/main
+
     }
 
     // Calcular límites después de tener columnas
