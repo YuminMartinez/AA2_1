@@ -22,6 +22,7 @@ private:
     int limitLosSantos;
     int limitSanFierro;
     int totalNpc;
+    int maxMoney = 100;
     
 
 public:
@@ -45,6 +46,10 @@ public:
     int getColumnas() const 
     { 
         return columnas; 
+    }
+    int getMaxMoney() const
+    {
+        return maxMoney;
     }
     
 };

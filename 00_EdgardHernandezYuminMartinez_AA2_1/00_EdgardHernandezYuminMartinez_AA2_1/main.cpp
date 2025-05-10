@@ -24,7 +24,7 @@ int main()
 	
 	while (game.finish == false)
 	{
-		Sleep(10);
+		Sleep(100);
 		limpiarPantalla();
 		
 		

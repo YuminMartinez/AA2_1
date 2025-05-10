@@ -7,7 +7,7 @@ public:
 	int m_PosY;
 	int money = 0;
 	int playerView_Width = 11;
-	int playerView_Heigh = 7;
+	int playerView_Heigh = 11;
 
 	Player();
 	void moveForward();

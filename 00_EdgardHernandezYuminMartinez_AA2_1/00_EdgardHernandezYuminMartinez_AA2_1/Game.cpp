@@ -17,6 +17,15 @@ void Game::PlayerInPut()
             m_player.moveLeft(); // Asumes que esto actualiza x
             m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_LEFT;
         }
+        else if (m_map.m_Type[x][y - 1] == objectType::MONEY)
+        {
+            m_map.m_Type[x][y] = objectType::DEFAULT;
+            m_player.moveLeft(); // Asumes que esto actualiza x
+            m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_LEFT;
+            m_player.money += numRandom(1, m_map.getMaxMoney());
+            
+
+        }
     }// se mueve hacia izquierda
     else if (GetAsyncKeyState(VK_UP) & 0x8000 && y > 0)
     {
@@ -24,20 +33,16 @@ void Game::PlayerInPut()
         {
             m_map.m_Type[x][y] = objectType::DEFAULT;
             m_player.moveForward();
-             // Asumes que esto actualiza y
+            // Asumes que esto actualiza y
             m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_UP;
         }
-        else if (m_map.m_Type[x - 1][y] == objectType::NPC)
+        else if (m_map.m_Type[x - 1][y] == objectType::MONEY)
         {
-            //codigo hacer parar al npc
-
-
-
-            //codigo jugador
-            if (GetAsyncKeyState(VK_UP) & 0x8000)
-            {
-
-            }
+            m_map.m_Type[x][y] = objectType::DEFAULT;
+            m_player.moveForward();
+            // Asumes que esto actualiza y
+            m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_UP;
+            m_player.money += numRandom(1, m_map.getMaxMoney());
         }
     }// se mueve hacia atras
     else if (GetAsyncKeyState(VK_RIGHT) & 0x8000 && x < m_map.getFilas() - 1)
@@ -47,17 +52,34 @@ void Game::PlayerInPut()
             m_map.m_Type[x][y] = objectType::DEFAULT;
             m_player.moveRight();
             m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_RIGHT;
+           
         }
+        else if (m_map.m_Type[x][y + 1] == objectType::MONEY)
+        {
+            m_map.m_Type[x][y] = objectType::DEFAULT;
+            m_player.moveRight();
+            m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_RIGHT;
+            m_player.money += numRandom(1, m_map.getMaxMoney());
 
+        }
     }// se mueve hacia derecha
     else if (GetAsyncKeyState(VK_DOWN) & 0x8000 && y < m_map.getColumnas() - 1)
     {
         if (m_map.m_Type[x + 1][y] == objectType::DEFAULT)
         {
             m_map.m_Type[x][y] = objectType::DEFAULT;
-            m_player.moveBack();           
+            m_player.moveBack();
             m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_DOWN;
+          
         }
+        else if (m_map.m_Type[x + 1][y] == objectType::MONEY)
+        {
+            m_map.m_Type[x][y] = objectType::DEFAULT;
+            m_player.moveBack();
+            m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_DOWN;
+            m_player.money += numRandom(1, m_map.getMaxMoney());
+        }
+
     }
     else
     {
@@ -66,14 +88,72 @@ void Game::PlayerInPut()
     }
 
 
+    /*
 
+
+            // Verificar límites del mapa y si hay un NPC
+            if (nx >= 0 && nx < m_map.getFilas() &&
+                ny >= 0 && ny < m_map.getColumnas() &&
+                m_map.m_Type[nx][ny] == objectType::NPC) {
+
+               // .....
+            }
+    */
+
+    // Ataque con SPACE (independiente del movimiento)
+    if (GetAsyncKeyState(VK_SPACE) & 0x8000) {
+        //ataque segun donde el jugador mira
+
+        /*
+        // Dirección actual del jugador
+        int dirX = 0, dirY = 0;
+        switch (m_map.m_Type[m_player.m_PosX][m_player.m_PosY]) {
+        case objectType::PLAYER_LEFT:  dirY = -1; break;
+        case objectType::PLAYER_UP:    dirX = -1; break;
+        case objectType::PLAYER_RIGHT: dirY = +1; break;
+        case objectType::PLAYER_DOWN: dirX = +1; break;
+        }
+
+        // Posición adyacente en la dirección que mira el jugador
+        int targetX = m_player.m_PosX + dirX;
+        int targetY = m_player.m_PosY + dirY;
+
+
+        */
+        // Coordenadas de las 4 casillas adyacentes (arriba, abajo, izquierda, derecha)
+        int adjacent[4][2] = { {x - 1, y}, {x + 1, y}, {x, y - 1}, {x, y + 1} };
+
+        // Buscar NPCs adyacentes
+        for (int i = 0; i < 4; ++i) {
+            int targetX = adjacent[i][0];
+            int targetY = adjacent[i][1];
+
+
+            // Verificar si hay un NPC en la posición de ataque
+            if (targetX >= 0 && targetX < m_map.getFilas() &&
+                targetY >= 0 && targetY < m_map.getColumnas() &&
+                m_map.m_Type[targetX][targetY] == objectType::NPC) {
+
+                // 1. Eliminar el NPC del array
+                for (int i = 0; i < m_map.getNPC(); i++) {
+                    if (m_NPC.npc_PosX[i] == targetX && m_NPC.npc_PosY[i] == targetY) {
+                        m_NPC.npc_Alive[i] = false;
+                        break;
+                    }
+                }
+
+                m_map.m_Type[targetX][targetY] = objectType::MONEY;
+            }
+        }
+    }
 }
+
 
 
 void Game ::printMap() const 
 {
    
-   /// Calcular la posición de inicio para la vista
+   /// calcular la posición de inicio para la vista
     int startFila = m_player.m_PosX - m_player.playerView_Heigh / 2;  // Filas (Y)
     int startCol = m_player.m_PosY - m_player.playerView_Width / 2;   // Columnas (X)
 
@@ -155,9 +235,14 @@ void Game ::printMap() const
     std::cout << "\nJugador: (" << m_player.m_PosX << ", " << m_player.m_PosY << ")";
     std::cout << "\nVista: " << m_player.playerView_Width << "x" << m_player.playerView_Heigh;
     std::cout << "\nMapa: " << m_map.getColumnas() << "x" << m_map.getFilas() << "\n";
+    std::cout << "\nDinero: " << m_player.money << "$";
     
+  
+
     //visualizacion del mapa entero
+    
     /*
+    
     for (int i = 0; i < m_map.getFilas(); ++i) {
         for (int j = 0; j < m_map.getColumnas(); ++j) {
             switch (m_map.m_Type[i][j]) {
