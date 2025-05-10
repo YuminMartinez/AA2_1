@@ -19,7 +19,7 @@ int main()
 	game.m_player;
 	game.m_NPC;
 	game.setPlayer();
-
+	game.CreateNPC();
 	//game.npcSpawn(6);
 	
 	while (game.finish == false)
@@ -29,6 +29,7 @@ int main()
 		
 		
 		game.printMap();
+		game.NPCMoviment();
 		game.PlayerInPut();
 
 	}

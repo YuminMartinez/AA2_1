@@ -27,10 +27,24 @@ private:
 public:
 
     objectType** m_Type;
-    Map(); 
-    ~Map(); 
-    
-    int getFilas() const;
-    int getColumnas() const;
+    Map();
+    ~Map();
+    void printMap() const;
+    int getLimitLosSantos() const 
+    {
+        return limitLosSantos; 
+    }
+    int getFilas() const 
+    { 
+        return filas; 
+    }
+    int getNPC() const 
+    { 
+        return totalNpc; 
+    }
+    int getColumnas() const 
+    { 
+        return columnas; 
+    }
     
 };

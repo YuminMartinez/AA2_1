@@ -61,13 +61,24 @@ Map::~Map() {
         delete[] m_Type;
     }
 }
-int Map::getColumnas() const {
 
-    return columnas;
+void Map::printMap() const {
 
-}
-
-int Map::getFilas() const {
-
-    return filas;
+    for (int i = 0; i < filas; ++i) {
+        for (int j = 0; j < columnas; ++j) {
+            switch (m_Type[i][j]) {
+            case objectType::LIMIT: std::cout << "X"; break;
+            case objectType::PLAYER_UP: std::cout << "^"; break;
+            case objectType::PLAYER_DOWN: std::cout << "v"; break;
+            case objectType::PLAYER_LEFT: std::cout << "<"; break;
+            case objectType::PLAYER_RIGHT: std::cout << ">"; break;
+            case objectType::NPC: std::cout << "P"; break;
+            case objectType::MONEY: std::cout << "$"; break;
+            case objectType::CAR: std::cout << "C"; break;
+            case objectType::DEFAULT: std::cout << " "; break;
+            default: std::cout << "?"; break;
+            }
+        }
+        std::cout << '\n';
+    }
 }

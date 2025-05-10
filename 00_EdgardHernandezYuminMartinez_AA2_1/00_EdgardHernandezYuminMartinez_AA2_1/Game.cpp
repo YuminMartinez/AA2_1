@@ -70,7 +70,8 @@ void Game::PlayerInPut()
 }
 
 
-void Game ::printMap() const {
+void Game ::printMap() const 
+{
    
    /// Calcular la posición de inicio para la vista
     int startFila = m_player.m_PosX - m_player.playerView_Heigh / 2;  // Filas (Y)
@@ -81,42 +82,68 @@ void Game ::printMap() const {
     if (startCol < 0)  startCol = 0;
 
     // Asegurarnos de que la vista no se salga del mapa
-    if (startFila + m_player.playerView_Heigh > m_map.getFilas()) {
+    if (startFila + m_player.playerView_Heigh > m_map.getFilas()) 
+    {
         startFila = m_map.getFilas() - m_player.playerView_Heigh;
     }
 
-    if (startCol + m_player.playerView_Width > m_map.getColumnas()) {
+    if (startCol + m_player.playerView_Width > m_map.getColumnas())
+    {
         startCol = m_map.getColumnas() - m_player.playerView_Width;
     }
 
     // Dibujar el mapa centrado en el jugador
-    for (int fila = 0; fila < m_player.playerView_Heigh; ++fila) {
-        for (int col = 0; col < m_player.playerView_Width; ++col) {
+    for (int fila = 0; fila < m_player.playerView_Heigh; ++fila) 
+    {
+        for (int col = 0; col < m_player.playerView_Width; ++col) 
+        {
             int mapY = startFila + fila; // Fila real en el mapa
             int mapX = startCol + col;   // Columna real en el mapa
 
-            if (mapY >= 0 && mapY < m_map.getFilas() &&
-                mapX >= 0 && mapX < m_map.getColumnas()) {
-
+            if (mapY >= 0 && mapY < m_map.getFilas() && mapX >= 0 && mapX < m_map.getColumnas()) 
+            {
                 // Marcar al jugador con un símbolo especial (@)
-                if (mapY == m_player.m_PosX && mapX == m_player.m_PosY) {
-                    switch (m_map.m_Type[mapY][mapX]) {
-                    case objectType::PLAYER_UP:    std::cout << "^"; break;
-                    case objectType::PLAYER_DOWN:  std::cout << "v"; break;
-                    case objectType::PLAYER_LEFT:  std::cout << "<"; break;
-                    case objectType::PLAYER_RIGHT: std::cout << ">"; break;
+                if (mapY == m_player.m_PosX && mapX == m_player.m_PosY) 
+                {
+                    switch (m_map.m_Type[mapY][mapX]) 
+                    {
+                    case objectType::PLAYER_UP:   
+                        std::cout << "^"; 
+                        break;
+                    case objectType::PLAYER_DOWN:  
+                        std::cout << "v"; 
+                        break;
+                    case objectType::PLAYER_LEFT: 
+                        std::cout << "<"; 
+                        break;
+                    case objectType::PLAYER_RIGHT: 
+                        std::cout << ">"; 
+                        break;
                     }
                 }
-                else {
+                else 
+                {
                     // Renderizar según el tipo de objeto en esa posición
-                    switch (m_map.m_Type[mapY][mapX]) {
-                    case objectType::LIMIT:        std::cout << "X"; break;
-                       
-                    case objectType::NPC:          std::cout << "P"; break;
-                    case objectType::MONEY:        std::cout << "$"; break;
-                    case objectType::CAR:          std::cout << "C"; break;
-                    case objectType::DEFAULT:      std::cout << " "; break;
-                    default:                       std::cout << "?"; break;
+                    switch (m_map.m_Type[mapY][mapX]) 
+                    {
+                    case objectType::LIMIT:        
+                        std::cout << "X";
+                        break;                       
+                    case objectType::NPC:          
+                        std::cout << "P"; 
+                        break;
+                    case objectType::MONEY: 
+                        std::cout << "$"; 
+                        break;
+                    case objectType::CAR: 
+                        std::cout << "C"; 
+                        break;
+                    case objectType::DEFAULT:
+                        std::cout << " "; 
+                        break;
+                    default:                       
+                        std::cout << "?"; 
+                        break;
                     }
                 }
             }
@@ -149,33 +176,93 @@ void Game ::printMap() const {
         std::cout << '\n';
     }
     */
-
-
-
-
 }
-
-
 
 void Game::setPlayer()
 {
    
     m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_UP;
 }
-
-/*/void Game::npcSpawn(int npc)
+void Game::CreateNPC()
 {
-	for (int i = 0; i < npc; i++) {
-		int randX, randY;
-		do {
-			randX = rand() % 5;
-			randY = rand() % 5;
-		} while (m_map.m_Type[randX][randY] != objectType::DEFAULT);  // Asegura que no haya otro enemigo o el jugador
+    for (int i = 0; i < m_map.getNPC(); i++) {
+        do {
+            m_NPC.npc_PosX[i] = numRandom(1, m_map.getFilas() - 1);
+            m_NPC.npc_PosY[i] = numRandom(1, m_map.getLimitLosSantos() - 1);
+        } while (m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] != objectType::DEFAULT);  // Asegura que solo spawnean en un lugar donde este vacio
 
-		m_map.m_Type[randX][randY] = objectType::NPC;  // Coloca al enemigo
-	
-
-		
-	}
+        m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] = objectType::NPC;
+        m_NPC.npc_Alive[i] = true;
+    }
 }
-/*/
+void Game::NPCMoviment()
+{
+    bool playerInRange[6] = { false };
+    for (int i = -1; i <= 1; i++)
+    {
+        for (int j = -1; j <= 1; j++)
+        {
+            int  t = 0;
+            int checkPosX = m_player.m_PosX + i;
+            int checkPosY = m_player.m_PosY + j;
+            while (t < m_map.getNPC())
+            {
+                if (m_NPC.npc_PosX[t] == checkPosX && m_NPC.npc_PosY[t] == checkPosY) {
+                    playerInRange[t] = true;
+                }
+                t++;
+            }
+        }
+    }
+    for (int totalNPC = 0; totalNPC < m_map.getNPC(); totalNPC++)
+    {
+        if (playerInRange[totalNPC] == false)
+        {
+            bool moved = false;
+            int intentos = 0;
+            while (!moved && intentos < 10)
+            {
+                int newX = m_NPC.npc_PosX[totalNPC];
+                int newY = m_NPC.npc_PosY[totalNPC];
+                int randomMoviment = numRandom(1, 4);
+
+                switch (randomMoviment)
+                {
+                case 1: // Arriba
+                    newX--;
+                    break;
+                case 2: // Abajo
+                    newX++;
+                    break;
+                case 3: // Izquierda
+                    newY--;
+                    break;
+                case 4: // Derecha
+                    newY++;
+                    break;
+                }
+                int limiteX = m_map.getFilas() - 1;
+                int limiteY = m_map.getColumnas() - 1;
+                // Verifica que la posición nueva esté dentro del mapa
+                if (newX >= 0 && newX < limiteX && newY >= 0 && newY < limiteY)
+                {
+                    // Verifica que la casilla esté vacía
+                    if (m_map.m_Type[newX][newY] == objectType::DEFAULT) {
+                        // Libera la casilla anterior
+                        m_map.m_Type[m_NPC.npc_PosX[totalNPC]][m_NPC.npc_PosY[totalNPC]] = objectType::DEFAULT;
+
+                        // Actualiza posición
+                        m_NPC.npc_PosX[totalNPC] = newX;
+                        m_NPC.npc_PosY[totalNPC] = newY;
+
+                        // Marca la casilla como NPC
+                        m_map.m_Type[newX][newY] = objectType::NPC;
+
+                        moved = true;
+                    }
+                }
+                intentos++;
+            }
+        }
+    }
+}

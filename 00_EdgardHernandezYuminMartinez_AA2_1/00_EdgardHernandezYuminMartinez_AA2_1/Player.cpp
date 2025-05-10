@@ -1,8 +1,9 @@
 #include "util.h"
+
 Player::Player()
 {
-	m_PosX = numRandom(1, 15);
-	m_PosY = numRandom(1, 69);
+	m_PosX = numRandom(1, 69);
+	m_PosY = numRandom(1, 15);
 
 }
 void Player::moveForward() 
