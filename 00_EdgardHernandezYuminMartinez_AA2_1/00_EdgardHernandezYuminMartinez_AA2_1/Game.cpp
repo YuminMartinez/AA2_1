@@ -1,7 +1,7 @@
 #include "Game.h"
 #include <Windows.h> 
 
-void Game:: CheckLimit(int x,int y)
+void Game:: CheckLimit(int x,int y) 
 {
 	if (m_map.m_Type[m_player.m_PosX][m_player.m_PosY] == objectType::LIMIT)
 	{
