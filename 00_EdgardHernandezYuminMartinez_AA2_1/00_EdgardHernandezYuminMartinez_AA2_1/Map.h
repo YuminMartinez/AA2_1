@@ -29,5 +29,7 @@ public:
     Map(); 
     ~Map(); 
     void printMap() const;
+    int getFilas() const;
+    int getColumnas() const;
     
 };

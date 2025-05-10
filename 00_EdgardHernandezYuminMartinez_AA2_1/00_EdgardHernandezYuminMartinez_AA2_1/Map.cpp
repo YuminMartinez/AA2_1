@@ -23,24 +23,19 @@ Map::Map()
 
     if (!std::getline(ss, item, ';') || (filas = std::stoi(item)) <= 0) {
         std::cerr << "Filas inválidas\n";
-        return;
     }
 
     if (!std::getline(ss, item, ';') || (columnas = std::stoi(item)) <= 0) {
         std::cerr << "Columnas inválidas\n";
-        return;
     }
     if (!std::getline(ss, item, ';') || (totalNpc = std::stoi(item)) <= 0) {
         std::cerr << "Columnas inválidas\n";
-        return;
     }
     if (!std::getline(ss, item, ';') || (totalToSanFierro = std::stoi(item)) <= 0) {
         std::cerr << "Columnas inválidas\n";
-        return;
     }
     if (!std::getline(ss, item, ';') || (maxMoneySantos = std::stoi(item)) <= 0) {
         std::cerr << "Columnas inválidas\n";
-        return;
     }
 
     // Calcular límites después de tener columnas
@@ -98,4 +93,16 @@ void Map::printMap() const {
         }
         std::cout << '\n';
     }
+}
+
+
+int Map::getColumnas() const {
+
+    return columnas;
+
+}
+
+int Map::getFilas() const {
+
+    return filas;
 }

@@ -13,8 +13,6 @@ public:
 	NPC m_NPC;
 
 	bool finish = false;
-
-	void CheckLimit(int x,int y);
 	void PlayerInPut();
 	//void npcSpawn(int npc);
 	
