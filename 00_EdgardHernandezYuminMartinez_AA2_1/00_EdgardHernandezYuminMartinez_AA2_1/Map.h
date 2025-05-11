@@ -3,14 +3,15 @@
 class Player;
 enum class objectType
 {
-	PLAYER_UP,
+    PLAYER_UP,
     PLAYER_DOWN,
     PLAYER_LEFT,
     PLAYER_RIGHT,
-	NPC,
-	MONEY,
-	LIMIT,
-	CAR,
+    NPC,
+    MONEY,
+    LIMIT,
+    CAR,
+    PEAJE,
 	DEFAULT
 };
 class Map {
@@ -29,7 +30,7 @@ public:
     objectType** m_Type;
     Map();
     ~Map();
-    void printMap() const;
+    
     int getLimitLosSantos() const 
     {
         return limitLosSantos; 

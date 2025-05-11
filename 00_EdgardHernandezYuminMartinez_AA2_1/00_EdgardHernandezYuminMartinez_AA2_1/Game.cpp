@@ -11,16 +11,16 @@ void Game::PlayerInPut()
     // se mueve hacia delante
     if (GetAsyncKeyState(VK_LEFT) & 0x8000 && y > 0)
     {
-        if (m_map.m_Type[x][y - 1] == objectType::DEFAULT)
+        if (m_map.m_Type[x][y - 1] == objectType::DEFAULT|| m_map.m_Type[x][y - 1] == objectType::PEAJE)
         {
             m_map.m_Type[x][y] = objectType::DEFAULT;
-            m_player.moveLeft(); // Asumes que esto actualiza x
+            m_player.moveLeft(); 
             m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_LEFT;
         }
         else if (m_map.m_Type[x][y - 1] == objectType::MONEY)
         {
             m_map.m_Type[x][y] = objectType::DEFAULT;
-            m_player.moveLeft(); // Asumes que esto actualiza x
+            m_player.moveLeft(); 
             m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_LEFT;
             m_player.money += numRandom(1, m_map.getMaxMoneySantos());
             
@@ -29,25 +29,24 @@ void Game::PlayerInPut()
     }// se mueve hacia izquierda
     else if (GetAsyncKeyState(VK_UP) & 0x8000 && y > 0)
     {
-        if (m_map.m_Type[x - 1][y] == objectType::DEFAULT)
+        if (m_map.m_Type[x - 1][y] == objectType::DEFAULT|| m_map.m_Type[x - 1][y] == objectType::PEAJE)
         {
             m_map.m_Type[x][y] = objectType::DEFAULT;
             m_player.moveForward();
-            // Asumes que esto actualiza y
             m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_UP;
         }
         else if (m_map.m_Type[x - 1][y] == objectType::MONEY)
         {
             m_map.m_Type[x][y] = objectType::DEFAULT;
             m_player.moveForward();
-            // Asumes que esto actualiza y
+            
             m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_UP;
             m_player.money += numRandom(1, m_map.getMaxMoneySantos());
         }
     }// se mueve hacia atras
     else if (GetAsyncKeyState(VK_RIGHT) & 0x8000 && x < m_map.getFilas() - 1)
     {
-        if (m_map.m_Type[x][y + 1] == objectType::DEFAULT)
+        if (m_map.m_Type[x][y + 1] == objectType::DEFAULT|| m_map.m_Type[x][y + 1] == objectType::PEAJE)
         {
             m_map.m_Type[x][y] = objectType::DEFAULT;
             m_player.moveRight();
@@ -65,7 +64,7 @@ void Game::PlayerInPut()
     }// se mueve hacia derecha
     else if (GetAsyncKeyState(VK_DOWN) & 0x8000 && y < m_map.getColumnas() - 1)
     {
-        if (m_map.m_Type[x + 1][y] == objectType::DEFAULT)
+        if (m_map.m_Type[x + 1][y] == objectType::DEFAULT|| m_map.m_Type[x + 1][y] == objectType::PEAJE)
         {
             m_map.m_Type[x][y] = objectType::DEFAULT;
             m_player.moveBack();
@@ -86,7 +85,7 @@ void Game::PlayerInPut()
         m_player.m_PosX = x;
         m_player.m_PosY = y;
     }
-    // Ataque con SPACE (independiente del movimiento)
+    
     if (GetAsyncKeyState(VK_SPACE) & 0x8000) 
     {
         // Coordenadas de las 4 casillas adyacentes (arriba, abajo, izquierda, derecha)
@@ -99,9 +98,7 @@ void Game::PlayerInPut()
 
 
             // Verificar si hay un NPC en la posición de ataque
-            if (targetX >= 0 && targetX < m_map.getFilas() &&
-                targetY >= 0 && targetY < m_map.getColumnas() &&
-                m_map.m_Type[targetX][targetY] == objectType::NPC) 
+            if (targetX >= 0 && targetX < m_map.getFilas() &&  targetY >= 0 && targetY < m_map.getColumnas() && m_map.m_Type[targetX][targetY] == objectType::NPC) 
             {
                 // 1. Eliminar el NPC del array
                 for (int i = 0; i < m_map.getNPC(); i++) 
@@ -120,14 +117,20 @@ void Game::PlayerInPut()
 
 void Game::printMap() const
 {
-
+    
     /// calcular la posición de inicio para la vista
     int startFila = m_player.m_PosX - m_player.playerView_Heigh / 2;  // Filas (Y)
     int startCol = m_player.m_PosY - m_player.playerView_Width / 2;   // Columnas (X)
 
     // Corregir los límites: asegurarnos de que la vista no se sale del mapa
-    if (startFila < 0) startFila = 0;
-    if (startCol < 0)  startCol = 0;
+    if (startFila < 0)
+    {
+        startFila = 0;
+    }
+    if (startCol < 0)
+    {
+        startCol = 0;
+    }
 
     // Asegurarnos de que la vista no se salga del mapa
     if (startFila + m_player.playerView_Heigh > m_map.getFilas())
@@ -189,6 +192,9 @@ void Game::printMap() const
                     case objectType::DEFAULT:
                         std::cout << " ";
                         break;
+                    case objectType::PEAJE:
+                        std::cout << " ";
+                        break;
                     default:
                         std::cout << "?";
                         break;
@@ -202,8 +208,31 @@ void Game::printMap() const
     // Imprimir información de depuración
     std::cout << "\nJugador: (" << m_player.m_PosX << ", " << m_player.m_PosY << ")";
     std::cout << "\nVista: " << m_player.playerView_Width << "x" << m_player.playerView_Heigh;
-    std::cout << "\nMapa: " << m_map.getColumnas() << "x" << m_map.getFilas() << "\n";
+    std::cout << "\nMapa: " << m_map.getColumnas() << "x" << m_map.getFilas();
     std::cout << "\nDinero: " << m_player.money << "$";
+
+    
+    /*
+    for (int i = 0; i < m_map.getFilas(); ++i) {
+        for (int j = 0; j < m_map.getColumnas(); ++j) {
+            switch (m_map.m_Type[i][j]) {
+            case objectType::LIMIT: std::cout << "X"; break;
+            case objectType::PLAYER_UP: std::cout << "^"; break;
+            case objectType::PLAYER_DOWN: std::cout << "v"; break;
+            case objectType::PLAYER_LEFT: std::cout << "<"; break;
+            case objectType::PLAYER_RIGHT: std::cout << ">"; break;
+            case objectType::NPC: std::cout << "P"; break;
+            case objectType::MONEY: std::cout << "$"; break;
+            case objectType::CAR: std::cout << "C"; break;
+            case objectType::DEFAULT: std::cout << " "; break;
+            case objectType::PEAJE: std::cout << " "; break;
+            default: std::cout << "?"; break;
+            }
+        }
+        std::cout << '\n';
+    }
+    */
+
 }
 
 void Game::setPlayer()

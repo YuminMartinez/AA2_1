@@ -42,20 +42,27 @@ Map::Map()
     limitLosSantos = columnas / 3;
     limitSanFierro = limitLosSantos * 2;
 
-    // Inicializar matriz correctamente
+    // Inicialización de la matriz
     m_Type = new objectType * [filas];
-    for (int i = 0; i < filas; ++i)
-    {
+    for (int i = 0; i < filas; ++i) {
         m_Type[i] = new objectType[columnas];
-        for (int j = 0; j < columnas; ++j) 
-        {
-            if (i == 0 || j == 0 || i == filas - 1 || j == columnas - 1 || j == limitLosSantos || j == limitSanFierro) 
-            {
+        for (int j = 0; j < columnas; ++j) {
+            // 1. Por defecto, todo es transitable (DEFAULT)
+            m_Type[i][j] = objectType::DEFAULT;
+
+            // 2. Todos los bordes son LIMIT 
+            if (i == 0 || j == 0 || i == filas - 1 || j == columnas - 1 ||    j == limitLosSantos || j == limitSanFierro) {
                 m_Type[i][j] = objectType::LIMIT;
             }
-            else 
+
+            // 3.Colocar passaje
+            if (i == 40 && j == limitLosSantos) {
+                m_Type[i][j] = objectType::PEAJE;  
+            }
+            
+            if (i == 10 && j == limitSanFierro)
             {
-                m_Type[i][j] = objectType::DEFAULT;
+                m_Type[i][j] = objectType::PEAJE;
             }
         }
     }
@@ -72,46 +79,3 @@ Map::~Map()
     }
 }
 
-void Map::printMap() const // Imprime el mapa dependiendo de que valor tenga cada celda, solo en uso de prueba para comprobar que el mapa se genera correctamente
-{
-
-    for (int i = 0; i < filas; ++i) 
-    {
-        for (int j = 0; j < columnas; ++j) 
-        {
-            switch (m_Type[i][j]) {
-            case objectType::LIMIT:
-                std::cout << "X"; 
-                break;
-            case objectType::PLAYER_UP:
-                std::cout << "^"; 
-                break;
-            case objectType::PLAYER_DOWN: 
-                std::cout << "v"; 
-                break;
-            case objectType::PLAYER_LEFT:
-                std::cout << "<"; 
-                break;
-            case objectType::PLAYER_RIGHT: 
-                std::cout << ">";
-                break;
-            case objectType::NPC: 
-                std::cout << "P";
-                break;
-            case objectType::MONEY: 
-                std::cout << "$"; 
-                break;
-            case objectType::CAR: 
-                std::cout << "C"; 
-                break;
-            case objectType::DEFAULT:
-                std::cout << " ";
-                break;
-            default: 
-                std::cout << "?";
-                break;
-            }
-        }
-        std::cout << '\n';
-    }
-}
