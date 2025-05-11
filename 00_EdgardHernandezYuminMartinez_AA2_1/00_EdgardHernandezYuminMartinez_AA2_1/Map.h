@@ -23,7 +23,9 @@ private:
     int limitLosSantos;
     int limitSanFierro;
     int totalNpc;
-     
+    int totalNpcSanFierro;
+    int totalToLasVenturas;
+    int maxMoneySanFierro;
 
 public:
 
@@ -35,6 +37,10 @@ public:
     {
         return limitLosSantos; 
     }
+    int getLimitSanFierro() const
+    {
+        return limitSanFierro;
+    }
     int getFilas() const 
     { 
         return filas; 
@@ -42,6 +48,10 @@ public:
     int getNPC() const 
     { 
         return totalNpc; 
+    }
+    int getNPCSanFierro() const
+    {
+        return totalNpcSanFierro;
     }
     int getColumnas() const 
     { 

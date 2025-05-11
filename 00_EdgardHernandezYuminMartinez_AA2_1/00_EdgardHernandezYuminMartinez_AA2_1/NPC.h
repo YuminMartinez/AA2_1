@@ -3,8 +3,8 @@
 class NPC
 {
 public:
-	int npc_PosX[6];
-	int npc_PosY[6];
-	bool npc_Alive[6];
+	int npc_PosX[24];
+	int npc_PosY[24];
+	bool npc_Alive[24];
 };
 

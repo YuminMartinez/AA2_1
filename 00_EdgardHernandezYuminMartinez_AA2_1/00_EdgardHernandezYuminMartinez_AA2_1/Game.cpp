@@ -253,14 +253,25 @@ void Game::CreateNPC()
         m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] = objectType::NPC;
         m_NPC.npc_Alive[i] = true;
     }
+    for (int i = m_map.getNPC(); i < m_map.getNPC()+m_map.getNPCSanFierro(); i++)
+    {
+        do
+        {
+            m_NPC.npc_PosX[i] = numRandom(1, m_map.getFilas() - 1);
+            m_NPC.npc_PosY[i] = numRandom(m_map.getLimitLosSantos()+1, m_map.getLimitSanFierro() - 1);
+        } while (m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] != objectType::DEFAULT);  // Asegura que solo spawnean en un lugar donde este vacio
+
+        m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] = objectType::NPC;
+        m_NPC.npc_Alive[i] = true;
+    }
 }
 void Game::NPCMoviment()
 {
-    for (int p = 0; p < m_map.getNPC(); p++)
+    for (int p = 0; p < m_map.getNPC()+ m_map.getNPCSanFierro(); p++)
     {
         if (m_NPC.npc_Alive[p] == true)
         {
-            bool playerInRange[6] = { false };
+            bool playerInRange[24] = { false };
             for (int i = -1; i <= 1; i++)
             {
                 for (int j = -1; j <= 1; j++)
@@ -268,7 +279,7 @@ void Game::NPCMoviment()
                     int  t = 0;
                     int checkPosX = m_player.m_PosX + i;
                     int checkPosY = m_player.m_PosY + j;
-                    while (t < m_map.getNPC())
+                    while (t < m_map.getNPC()+ m_map.getNPCSanFierro())
                     {
                         if (m_NPC.npc_PosX[t] == checkPosX && m_NPC.npc_PosY[t] == checkPosY)
                         {
@@ -278,7 +289,7 @@ void Game::NPCMoviment()
                     }
                 }
             }
-            for (int totalNPC = 0; totalNPC < m_map.getNPC(); totalNPC++)
+            for (int totalNPC = 0; totalNPC < m_map.getNPC()+m_map.getNPCSanFierro(); totalNPC++)
             {
                 if (playerInRange[totalNPC] == false)
                 {

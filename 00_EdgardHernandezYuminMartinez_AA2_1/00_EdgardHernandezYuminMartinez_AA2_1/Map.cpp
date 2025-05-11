@@ -31,6 +31,11 @@ Map::Map()
             if (std::getline(ss, item, ';')) totalToSanFierro = std::stoi(item);
             if (std::getline(ss, item, ';')) maxMoneySantos = std::stoi(item);
             break;
+        case 2:
+            if (std::getline(ss, item, ';')) totalNpcSanFierro = std::stoi(item);
+            if (std::getline(ss, item, ';')) totalToLasVenturas = std::stoi(item);
+            if (std::getline(ss, item, ';')) maxMoneySanFierro = std::stoi(item);
+            break;
         default:
             std::cerr << "Línea desconocida en config.txt\n";
         }

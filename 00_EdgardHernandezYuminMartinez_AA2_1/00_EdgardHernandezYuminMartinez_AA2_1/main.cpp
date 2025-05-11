@@ -22,7 +22,7 @@ int main()
 	game.CreateNPC();	
 	while (game.finish == false)
 	{
-		Sleep(30);
+		Sleep(100);
 		limpiarPantalla();
 		
 		
