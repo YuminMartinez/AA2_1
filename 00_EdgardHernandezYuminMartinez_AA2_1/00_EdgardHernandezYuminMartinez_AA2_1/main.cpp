@@ -7,7 +7,7 @@ int numRandom(int min, int max)
 }
 
 void limpiarPantalla() {
-	system("cls");  // Windows uwu
+	system("cls");  
 
 }
 int main()
@@ -19,12 +19,10 @@ int main()
 	game.m_player;
 	game.m_NPC;
 	game.setPlayer();
-	game.CreateNPC();
-	//game.npcSpawn(6);
-	
+	game.CreateNPC();	
 	while (game.finish == false)
 	{
-		Sleep(100);
+		Sleep(30);
 		limpiarPantalla();
 		
 		
